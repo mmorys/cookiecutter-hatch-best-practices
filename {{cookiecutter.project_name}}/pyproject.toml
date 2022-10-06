@@ -1,0 +1,127 @@
+[build-system]
+requires = ["hatchling", "hatch-containers"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{cookiecutter.project_name}}"
+description = '{{cookiecutter.desctiption}}'
+readme = "README.md"
+requires-python = ">=3.7"
+license = ""
+keywords = []
+authors = [
+  { name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+dynamic = ["version"]
+
+  [project.urls]
+  Documentation = "https://github.com/myusername/{{ cookiecutter.project_name }}#readme"
+  Source = "https://github.com/myusername/{{ cookiecutter.project_name }}"
+
+  [project.scripts]
+  {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.cli:{{cookiecutter.package_name}}"
+
+[tool.hatch.version]
+path = "{{ cookiecutter.package_name }}/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+  "pytest-xdist",
+  "pytest-randomly",
+  "pytest-rerunfailures"
+]
+  [tool.hatch.envs.default.scripts]
+  full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={{ cookiecutter.package_name }} {args:tests}"
+  dev = "pytest -p no:randomly --no-cov {args:tests}"
+
+[[tool.hatch.envs.test.matrix]]
+type = "container"
+python = ["37", "38", "39", "310", "311"]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "bandit>=1.7.4",
+  "black>=22.6.0",
+  "flake8>=5.0.0",
+  "flake8-bugbear>=22.7.1",
+  "flake8-quotes>=3.3.1",
+  "flake8-tidy-imports>=4.8.0",
+  "isort>=5.10.1",
+  "mypy>=0.971",
+]
+  [tool.hatch.envs.lint.scripts]
+  typing = "mypy --install-types --non-interactive {args:{{ cookiecutter.package_name }} tests}"
+  security = "bandit --quiet {args:.}"
+  style = [
+    "flake8 {args:.}",
+    "black --check --diff {args:.}",
+    "isort --check-only --diff {args:.}",
+  ]
+  fmt = [
+    "isort {args:.}",
+    "black {args:.}",
+    "style",
+  ]
+  all = [
+    "style",
+    "typing",
+    "security",
+  ]
+
+[tool.mypy]
+disallow_untyped_defs = false
+follow_imports = "normal"
+ignore_missing_imports = true
+pretty = true
+show_column_numbers = true
+warn_no_return = false
+warn_unused_ignores = true
+
+[tool.bandit]
+recursive = true
+  [tool.bandit.try_except_pass]
+  check_typed_exception = false
+
+[tool.black]
+include = '\.pyi?$'
+line-length = 120
+target-version = ["py37"]
+
+[tool.isort]
+force_grid_wrap = 0
+include_trailing_comma = true
+known_first_party = ["{{ cookiecutter.package_name }}"]
+line_length = 120
+multi_line_output = 3
+use_parentheses = true
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+  "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.package_name }}/__about__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+

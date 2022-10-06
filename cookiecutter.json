@@ -1,0 +1,11 @@
+{
+    "project_name": "hatch-best-practices",
+    "package_name": "{{ cookiecutter.project_name.replace('-', '_') }}",
+    "desctiption": "",
+    "author": "First Last",
+    "email": "myname@mydomain.com",
+    "license": ["MIT", "Apache-2.0", "GPL-3.0"],
+    "use_tests": true,
+    "use_ci": false,
+    "src_layout": true
+  }

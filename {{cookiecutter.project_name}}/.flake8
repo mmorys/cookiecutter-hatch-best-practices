@@ -1,0 +1,7 @@
+[flake8]
+max-line-length = 120
+ban-relative-imports = true
+per-file-ignores =
+    # tests can use relative imports
+    tests/*: I252
+    tests/**/*: I252
