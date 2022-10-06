@@ -31,10 +31,10 @@ dynamic = ["version"]
   Source = "https://github.com/myusername/{{ cookiecutter.project_name }}"
 
   [project.scripts]
-  {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.cli:{{cookiecutter.package_name}}"
+  {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
 
 [tool.hatch.version]
-path = "{{ cookiecutter.package_name }}/__about__.py"
+path = "{{ cookiecutter.__package_name }}/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -45,7 +45,7 @@ dependencies = [
   "pytest-rerunfailures"
 ]
   [tool.hatch.envs.default.scripts]
-  full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={{ cookiecutter.package_name }} {args:tests}"
+  full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={{ cookiecutter.__package_name }} {args:tests}"
   dev = "pytest -p no:randomly --no-cov {args:tests}"
 
 [[tool.hatch.envs.test.matrix]]
@@ -65,7 +65,7 @@ dependencies = [
   "mypy>=0.971",
 ]
   [tool.hatch.envs.lint.scripts]
-  typing = "mypy --install-types --non-interactive {args:{{ cookiecutter.package_name }} tests}"
+  typing = "mypy --install-types --non-interactive {args:{{ cookiecutter.__package_name }} tests}"
   security = "bandit --quiet {args:.}"
   style = [
     "flake8 {args:.}",
@@ -105,7 +105,7 @@ target-version = ["py37"]
 [tool.isort]
 force_grid_wrap = 0
 include_trailing_comma = true
-known_first_party = ["{{ cookiecutter.package_name }}"]
+known_first_party = ["{{ cookiecutter.__package_name }}"]
 line_length = 120
 multi_line_output = 3
 use_parentheses = true
@@ -114,7 +114,7 @@ use_parentheses = true
 branch = true
 parallel = true
 omit = [
-  "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.package_name }}/__about__.py",
+  "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }}/__about__.py",
 ]
 
 [tool.coverage.report]

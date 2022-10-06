@@ -5,4 +5,4 @@ if src_layout:
     import shutil
 
     os.mkdir("src")
-    shutil.move("{{ cookiecutter.package_name }}", "src")
+    shutil.move("{{ cookiecutter.__package_name }}", "src")

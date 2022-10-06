@@ -1,4 +1,4 @@
-# Test Project CI
+# {{ cookiecutter.project_name }}
 
 -----
 

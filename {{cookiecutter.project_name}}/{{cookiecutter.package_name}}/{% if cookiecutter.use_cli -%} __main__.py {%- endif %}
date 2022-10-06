@@ -1,6 +1,6 @@
 import sys
 
 if __name__ == '__main__':
-    from .cli import {{ cookiecutter.package_name }}
+    from .cli import {{ cookiecutter.__package_name }}
 
-    sys.exit({{ cookiecutter.package_name }}())
+    sys.exit({{ cookiecutter.__package_name }}())
