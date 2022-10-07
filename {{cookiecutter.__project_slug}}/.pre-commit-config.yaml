@@ -1,56 +1,40 @@
 repos:
   - repo: local
     hooks:
-      - id: black
-        name: black
-        entry: hatch run lint:black
+      - id: lint
+        name: lint
+        entry: hatch run lint:all
         stages: [commit]
         language: system
-        types: [python]
         require_serial: true
 
       - id: check-added-large-files
         name: Check for added large files
-        entry: hatch run check-added-large-files
+        entry: check-added-large-files
         language: system
 
       - id: check-toml
         name: Check Toml
-        entry: hatch run check-toml
+        entry: check-toml
         language: system
         types: [toml]
 
       - id: check-yaml
         name: Check Yaml
-        entry: hatch run check-yaml
+        entry: check-yaml
         language: system
         types: [yaml]
 
       - id: end-of-file-fixer
         name: Fix End of Files
-        entry: hatch run end-of-file-fixer
+        entry: end-of-file-fixer
         language: system
         types: [text]
         stages: [commit, push, manual]
 
-      - id: flake8
-        name: flake8
-        entry: hatch run lint:flake8
-        language: system
-        types: [python]
-        require_serial: true
-
-      - id: isort
-        name: isort
-        entry: hatch run lint:isort
-        require_serial: true
-        language: system
-        types_or: [cython, pyi, python]
-        args: ["--filter-files"]
-
       - id: trailing-whitespace
         name: Trim Trailing Whitespace
-        entry: hatch run trailing-whitespace-fixer
+        entry: trailing-whitespace-fixer
         language: system
         types: [text]
         stages: [commit, push, manual]
