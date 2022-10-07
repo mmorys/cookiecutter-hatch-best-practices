@@ -53,6 +53,7 @@ dependencies = [
 # TODO: add image name
 [[tool.hatch.envs.test.matrix]]
 type = "container"
+image = "quay.io/pypa/manylinux2014_x86_64"
 python = ["37", "38", "39", "310", "311"]
 
 [tool.hatch.envs.lint]
