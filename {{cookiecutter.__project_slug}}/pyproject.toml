@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling"{%- if cookiecutter.tag_on_version_bump -%}, "hatch-regex-commit"{%- endif -%}]
 build-backend = "hatchling.build"
 
 [project]
@@ -34,6 +34,10 @@ dynamic = ["version"]
   {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
 
 [tool.hatch.version]
+{% if cookiecutter.tag_on_version_bump -%}
+source = "regex_commit"
+tag_sign = false
+{%- endif -%}
 path = "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }}/__about__.py"
 
 [tool.hatch.envs.default]
