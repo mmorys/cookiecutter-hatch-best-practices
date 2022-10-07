@@ -51,8 +51,11 @@ dependencies = [
   dev = "pytest -p no:randomly --no-cov {args:tests}"
 
 [tool.hatch.envs.test]
-type = "container"
-image = "quay.io/pypa/manylinux2014_x86_64"
+env.HERMETIC_TESTS.type = [
+  { value = "container", if = ["true"] },
+  "virtual",
+]
+env.HERMETIC_TESTS.image = { value = "python:{version}", if = ["true"] }
   [[tool.hatch.envs.test.matrix]]
   python = ["37", "38", "39", "310", "311"]
 
