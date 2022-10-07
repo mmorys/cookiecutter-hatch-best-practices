@@ -90,11 +90,6 @@ show_column_numbers = true
 show_error_codes = true
 show_error_context = true
 
-[tool.bandit]
-recursive = true
-  [tool.bandit.try_except_pass]
-  check_typed_exception = false
-
 [tool.black]
 include = '\.pyi?$'
 line-length = 120
