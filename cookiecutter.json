@@ -10,5 +10,6 @@
     "use_cli": false,
     "src_layout": true,
     "tag_on_version_bump": true,
+    "git_and_precommit_init": true, 
     "__copyright_year": "{% now 'utc', '%Y' %}"
   }
