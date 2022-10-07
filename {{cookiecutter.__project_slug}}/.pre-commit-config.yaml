@@ -1,10 +1,24 @@
 repos:
   - repo: local
     hooks:
-      - id: lint
-        name: lint
-        entry: hatch run lint:all
-        stages: [commit]
+      - id: flake8
+        name: Flake8 linting
+        entry: hatch run lint:flake8
+        types: [python]
+        language: system
+        require_serial: true
+
+      - id: ufmt
+        name: μfmt code formatter check (black + usort)
+        entry: hatch run lint:ufmt check
+        type: [python]
+        language: system
+        require_serial: true
+
+      - id: typing
+        name: Mypy type checking
+        entry: hatch run lint:typing
+        type: [python]
         language: system
         require_serial: true
 
@@ -30,11 +44,9 @@ repos:
         entry: hatch run end-of-file-fixer
         language: system
         types: [text]
-        stages: [commit, push, manual]
 
       - id: trailing-whitespace
         name: Trim Trailing Whitespace
         entry: hatch run trailing-whitespace-fixer
         language: system
         types: [text]
-        stages: [commit, push, manual]

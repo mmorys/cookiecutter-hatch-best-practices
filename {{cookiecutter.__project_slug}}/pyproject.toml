@@ -65,27 +65,24 @@ python = ["37", "38", "39", "310", "311"]
 [tool.hatch.envs.lint]
 detached = true
 dependencies = [
-  "black>=22.6.0",
   "flake8>=5.0.0",
   "flake8-bandit>=2.1.2",
   "flake8-bugbear>=22.7.1",
   "flake8-docstrings>=1.6.0",
   "flake8-quotes>=3.3.1",
   "flake8-tidy-imports>=4.8.0",
-  "isort>=5.10.1",
   "mypy>=0.971",
   "pre-commit-hooks>=4.1.0",
+  "ufmt>=2.0.0",
 ]
   [tool.hatch.envs.lint.scripts]
   typing = "mypy --install-types --non-interactive {args:{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} tests}"
   style = [
     "flake8 {args:.}",
-    "black --check --diff {args:.}",
-    "isort --check-only --diff {args:.}",
+    "ufmt check {args:.}",
   ]
   fmt = [
-    "isort {args:.}",
-    "black {args:.}",
+    "ufmt format {args:.}",
     "style",
   ]
   all = [
