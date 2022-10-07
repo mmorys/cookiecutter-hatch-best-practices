@@ -34,7 +34,7 @@ dynamic = ["version"]
   {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
 
 [tool.hatch.version]
-path = "{{ cookiecutter.__package_name }}/__about__.py"
+path = "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }}/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
