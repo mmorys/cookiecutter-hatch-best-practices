@@ -55,9 +55,9 @@ python = ["37", "38", "39", "310", "311"]
 [tool.hatch.envs.lint]
 detached = true
 dependencies = [
-  "bandit>=1.7.4",
   "black>=22.6.0",
   "flake8>=5.0.0",
+  "flake8-bandit>=2.1.2"
   "flake8-bugbear>=22.7.1",
   "flake8-docstrings>=1.6.0",
   "flake8-quotes>=3.3.1",
@@ -67,7 +67,6 @@ dependencies = [
 ]
   [tool.hatch.envs.lint.scripts]
   typing = "mypy --install-types --non-interactive {args:{{ cookiecutter.__package_name }} tests}"
-  security = "bandit --quiet {args:.}"
   style = [
     "flake8 {args:.}",
     "black --check --diff {args:.}",
@@ -81,7 +80,6 @@ dependencies = [
   all = [
     "style",
     "typing",
-    "security",
   ]
 
 [tool.mypy]
