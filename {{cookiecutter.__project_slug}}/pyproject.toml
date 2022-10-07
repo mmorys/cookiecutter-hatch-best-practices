@@ -34,7 +34,7 @@ dynamic = ["version"]
   {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
 
 [tool.hatch.version]
-{% if cookiecutter.tag_on_version_bump -%}
+{% if cookiecutter.tag_on_version_bump %}
 source = "regex_commit"
 tag_sign = false
 {%- endif -%}
