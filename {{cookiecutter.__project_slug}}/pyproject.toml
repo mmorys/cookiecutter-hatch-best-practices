@@ -70,7 +70,7 @@ dependencies = [
   "mypy>=0.971",
 ]
   [tool.hatch.envs.lint.scripts]
-  typing = "mypy --install-types --non-interactive {args:{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }}{{ cookiecutter.__package_name }} tests}"
+  typing = "mypy --install-types --non-interactive {args:{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} tests}"
   style = [
     "flake8 {args:.}",
     "black --check --diff {args:.}",
