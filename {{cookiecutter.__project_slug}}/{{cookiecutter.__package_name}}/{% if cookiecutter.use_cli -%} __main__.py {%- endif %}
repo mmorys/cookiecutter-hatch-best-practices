@@ -1,3 +1,5 @@
+"""Main entrypoint for {{cookiecutter.__package_name}}."""
+
 import sys
 
 if __name__ == '__main__':
