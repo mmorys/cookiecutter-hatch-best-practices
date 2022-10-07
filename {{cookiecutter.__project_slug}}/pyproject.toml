@@ -42,7 +42,6 @@ path = "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__pac
 
 [tool.hatch.envs.default]
 dependencies = [
-  "pre-commit>=2.16.0",
   "pytest",
   "pytest-cov",
   "pytest-xdist",
@@ -72,6 +71,7 @@ dependencies = [
   "flake8-quotes>=3.3.1",
   "flake8-tidy-imports>=4.8.0",
   "mypy>=0.971",
+  "pre-commit>=2.16.0",
   "pre-commit-hooks>=4.1.0",
   "ufmt>=2.0.0",
 ]

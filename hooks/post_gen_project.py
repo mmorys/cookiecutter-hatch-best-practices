@@ -27,4 +27,4 @@ if git_and_precommit_init:
     import subprocess
 
     subprocess.Popen(["git", "init"])
-    subprocess.Popen(["hatch", "run", "pre-commit", "install"])
+    subprocess.Popen(["hatch", "run", "lint:pre-commit", "install"])
