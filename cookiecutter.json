@@ -7,7 +7,6 @@
     "email": "myname@mydomain.com",
     "license": ["MIT", "Apache-2.0", "GPL-3.0"],
     "use_tests": true,
-    "use_ci": false,
     "src_layout": true,
     "use_cli": false,
     "__copyright_year": "{% now 'utc', '%Y' %}"
