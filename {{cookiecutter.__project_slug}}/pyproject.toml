@@ -50,11 +50,11 @@ dependencies = [
   full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={{ cookiecutter.__package_name }} {args:tests}"
   dev = "pytest -p no:randomly --no-cov {args:tests}"
 
-# TODO: add image name
-[[tool.hatch.envs.test.matrix]]
+[tool.hatch.envs.test]
 type = "container"
 image = "quay.io/pypa/manylinux2014_x86_64"
-python = ["37", "38", "39", "310", "311"]
+  [[tool.hatch.envs.test.matrix]]
+  python = ["37", "38", "39", "310", "311"]
 
 [tool.hatch.envs.lint]
 detached = true
