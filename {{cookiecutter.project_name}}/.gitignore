@@ -1,0 +1,20 @@
+# Global directories
+__pycache__/
+
+# Global files
+*.py[cod]
+*.log
+
+# Root directories
+/.coverage
+/.env/
+/.idea/
+/.mypy_cache/
+/.pytest_cache/
+/.vscode/
+/dist/
+/docs/_build/
+{%- if cookiecutter.src_layout -%}/src{%- endif -%}/*.egg-info/
+
+# Root files
+/.coverage*
