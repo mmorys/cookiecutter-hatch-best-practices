@@ -6,9 +6,9 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "myst_parser"
-    {{%- if cookiecutter.use_cli -%}},
+    {%- if cookiecutter.use_cli -%},
     "sphinx_click",
-    {{%- endif %}}
+    {%- endif %}
 ]
 autodoc_typehints = "description"
 html_theme = "furo"
