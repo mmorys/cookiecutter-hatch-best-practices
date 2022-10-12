@@ -49,14 +49,6 @@ dependencies = [
   "pytest-xdist",
   "pytest-randomly",
   "pytest-rerunfailures"
-  
-  "sphinx",
-  "furo",
-  "myst-parser"
-  {%- endif %}
-  {%- if cookiecutter.use_cli and cookiecutter.sphinx_docs -%},
-  "sphinx-click"
-  {%- endif %}
 ]
   [tool.hatch.envs.default.scripts]
   full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} {args:tests}"
