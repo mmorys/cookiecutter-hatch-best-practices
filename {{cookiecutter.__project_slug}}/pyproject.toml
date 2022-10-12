@@ -30,8 +30,10 @@ dynamic = ["version"]
   Documentation = "https://github.com/myusername/{{ cookiecutter.project_name }}#readme"
   Source = "https://github.com/myusername/{{ cookiecutter.project_name }}"
 
+  {% if cookiecutter.use_cli -%}
   [project.scripts]
   {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
+  {% endif -%}
 
 [tool.hatch.version]
 {% if cookiecutter.tag_on_version_bump -%}
