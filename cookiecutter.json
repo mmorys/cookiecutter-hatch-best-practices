@@ -8,6 +8,7 @@
     "license": ["MIT", "Apache-2.0", "GPL-3.0"],
     "use_tests": true,
     "use_cli": false,
+    "sphinx_docs": true,
     "src_layout": true,
     "tag_on_version_bump": true,
     "git_and_precommit_init": true, 
