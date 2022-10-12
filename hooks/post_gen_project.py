@@ -6,6 +6,7 @@ import shutil
 src_layout = "{{ cookiecutter.src_layout }}"
 use_cli = "{{ cookiecutter.use_cli }}"
 use_tests = "{{ cookiecutter.use_tests }}"
+sphinx_docs = "{{ cookiecutter.sphinx_docs }}"
 git_and_precommit_init = "{{ cookiecutter.git_and_precommit_init }}"
 
 # Remove cli directory if not needed
@@ -15,6 +16,9 @@ if not use_cli:
 # Remove tests directory if not needed
 if not use_tests:
     shutil.rmtree("tests")
+
+if not sphinx_docs:
+    shutil.rmtree("docs")
 
 # Move package to src directory
 # *Must happen at the end of other file modifications
