@@ -21,6 +21,7 @@ repos:
         language: system
         types: [python]
         require_serial: true
+        stages: [push,manual]
 
       - id: check-added-large-files
         name: Check for added large files
