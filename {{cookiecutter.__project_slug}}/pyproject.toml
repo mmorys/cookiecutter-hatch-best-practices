@@ -53,9 +53,9 @@ dependencies = [
   "sphinx",
   "furo",
   "myst-parser"
-  {%- if cookiecutter.use_cli -%},
+  {%- endif %}
+  {%- if cookiecutter.use_cli and cookiecutter.sphinx_docs -%},
   "sphinx-click"
-  {%- endif -%}
   {%- endif %}
 ]
   [tool.hatch.envs.default.scripts]
