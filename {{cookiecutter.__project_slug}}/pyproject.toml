@@ -49,7 +49,7 @@ dependencies = [
   "pytest-xdist",
   "pytest-randomly",
   "pytest-rerunfailures"
-  {%- if cookiecutter.sphinx_docs -%},
+  
   "sphinx",
   "furo",
   "myst-parser"
@@ -61,6 +61,26 @@ dependencies = [
   [tool.hatch.envs.default.scripts]
   full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} {args:tests}"
   dev = "pytest -p no:randomly --no-cov {args:tests}"
+
+{%- if cookiecutter.sphinx_docs -%},
+[tool.hatch.envs.docs]
+template = "docs"
+dependencies = [
+  "sphinx",
+  "myst-parser",
+  "furo"
+  {%- if cookiecutter.use_cli -%},
+  "sphinx-click"
+  {%- endif %}
+]
+  [tool.hatch.envs.docs.scripts]
+  clean = "rm -r docs/build"
+  html = "sphinx-build -b html docs docs/build/html"
+  preview = [
+    "html",
+    "firefox docs/build/html/index.html"
+  ]
+{%- endif %}
 
 [tool.hatch.envs.test.overrides]
 env.HERMETIC_TESTS.type = [
