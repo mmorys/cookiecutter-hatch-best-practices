@@ -9,6 +9,7 @@
     "use_tests": true,
     "use_cli": false,
     "sphinx_docs": true,
+    "docs_preview_browser": ["firefox", "chromium", "google-chrome"],
     "src_layout": true,
     "tag_on_version_bump": true,
     "git_and_precommit_init": true, 

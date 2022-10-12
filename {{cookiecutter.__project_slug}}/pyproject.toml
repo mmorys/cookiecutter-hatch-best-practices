@@ -33,7 +33,7 @@ dynamic = ["version"]
   {% if cookiecutter.use_cli -%}
   [project.scripts]
   {{cookiecutter.project_name}} = "{{cookiecutter.__package_name}}.cli:{{cookiecutter.__package_name}}"
-  {% endif -%}
+  {%- endif %}
 
 [tool.hatch.version]
 {% if cookiecutter.tag_on_version_bump -%}
@@ -54,7 +54,7 @@ dependencies = [
   full = "pytest -n auto --reruns 5 --reruns-delay 3 -r aR --cov-report=term-missing --cov-config=pyproject.toml --cov={%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} {args:tests}"
   dev = "pytest -p no:randomly --no-cov {args:tests}"
 
-{%- if cookiecutter.sphinx_docs -%},
+{% if cookiecutter.sphinx_docs -%},
 [tool.hatch.envs.docs]
 template = "docs"
 dependencies = [
@@ -70,7 +70,7 @@ dependencies = [
   html = "sphinx-build -b html docs docs/build/html"
   preview = [
     "html",
-    "firefox docs/build/html/index.html"
+    "{{cookiecutter.docs_preview_browser}} docs/build/html/index.html"
   ]
 {%- endif %}
 
