@@ -1,7 +1,5 @@
 # Changelog
 
-```{literalinclude} ../CHANGELOG.md
----
-language: none
----
+```{include} ../CHANGELOG.md
 ```
+
