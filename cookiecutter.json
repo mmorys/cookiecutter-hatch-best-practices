@@ -13,5 +13,6 @@
     "src_layout": true,
     "tag_on_version_bump": true,
     "git_and_precommit_init": true, 
-    "__copyright_year": "{% now 'utc', '%Y' %}"
+    "__copyright_year": "{% now 'utc', '%Y' %}",
+    "__package_path": "{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }}"
   }
