@@ -81,35 +81,34 @@ env.HERMETIC_TESTS.type = [
 ]
 env.HERMETIC_TESTS.image = { value = "python:{version}", if = ["true"] }
 [[tool.hatch.envs.test.matrix]]
-python = ["37", "38", "39", "310", "311"]
+python = ["37", "38", "39", "310"]
 
 [tool.hatch.envs.lint]
 detached = true
 dependencies = [
   "flake8>=5.0.0",
   "flake8-bandit>=2.1.2",
+  "flake8-black>=0.3.0",
   "flake8-bugbear>=22.7.1",
   "flake8-docstrings>=1.6.0",
-  "flake8-quotes>=3.3.1",
+  "flake8-isort",
   "flake8-tidy-imports>=4.8.0",
   "mypy>=0.971",
   "pre-commit>=2.16.0",
-  "pre-commit-hooks>=4.1.0",
-  "ufmt>=2.0.0",
+  "pre-commit-hooks>=4.1.0"
 ]
   [tool.hatch.envs.lint.scripts]
   typing = "mypy --install-types --non-interactive {args:{%- if cookiecutter.src_layout -%}src/{%- endif -%}{{ cookiecutter.__package_name }} tests}"
   style = [
-    "flake8 {args:.}",
-    "ufmt check {args:.}",
+    "flake8 {args:.}"
   ]
   fmt = [
-    "ufmt format {args:.}",
+    "isort {args:.}",
+    "black {args:.}",
     "style",
   ]
   all = [
     "fmt",
-    "style",
     "typing",
   ]
 

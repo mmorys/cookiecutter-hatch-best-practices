@@ -8,13 +8,6 @@ repos:
         types: [python]
         require_serial: true
 
-      - id: ufmt
-        name: μfmt code formatter check (black + usort)
-        entry: hatch run lint:ufmt check
-        language: system
-        types: [python]
-        require_serial: true
-
       - id: typing
         name: Mypy type checking
         entry: hatch run lint:typing
