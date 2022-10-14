@@ -2,6 +2,7 @@
 
 import sys
 
+
 if __name__ == "__main__":
     from {{cookiecutter.__package_name}}.cli import {{ cookiecutter.__package_name }}
 
