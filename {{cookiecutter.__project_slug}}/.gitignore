@@ -14,7 +14,7 @@ __pycache__/
 /.vscode/
 /dist/
 /docs/_build/
-{%- if cookiecutter.src_layout -%}/src{%- endif -%}/*.egg-info/
+{%- if cookiecutter.src_layout == "y" -%}/src{%- endif -%}/*.egg-info/
 
 # Root files
 /.coverage*

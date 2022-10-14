@@ -3,11 +3,11 @@
 import os
 import shutil
 
-src_layout = {{cookiecutter.src_layout}}
-use_cli = {{cookiecutter.use_cli}}
-use_tests = {{cookiecutter.use_tests}}
-sphinx_docs = {{cookiecutter.sphinx_docs}}
-git_and_precommit_init = {{cookiecutter.git_and_precommit_init}}
+src_layout = {{cookiecutter.src_layout}} == "y"
+use_cli = {{cookiecutter.use_cli}} == "y"
+use_tests = {{cookiecutter.use_tests}} == "y"
+sphinx_docs = {{cookiecutter.sphinx_docs}} == "y"
+git_and_precommit_init = {{cookiecutter.git_and_precommit_init}} == "y"
 
 # Remove cli directory if not needed
 if not use_cli:
