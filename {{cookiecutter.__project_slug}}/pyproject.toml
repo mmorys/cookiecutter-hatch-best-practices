@@ -7,7 +7,7 @@ name = "{{cookiecutter.project_name}}"
 description = '{{cookiecutter.desctiption}}'
 readme = "README.md"
 requires-python = ">=3.7"
-license = ""
+license = "{{cookiecutter.license}}"
 keywords = []
 authors = [
   { name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}" },
