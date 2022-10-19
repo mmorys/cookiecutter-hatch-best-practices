@@ -85,8 +85,8 @@ env.HERMETIC_TESTS.image = { value = "python:{version}", if = ["true"] }
 python = ["37", "38", "39", "310"]
 
 [tool.hatch.envs.lint]
-detached = true
-dependencies = [
+detached = false
+extra-dependencies = [
   "flake8>=5.0.0",
   "flake8-bandit>=2.1.2",
   "flake8-black>=0.3.0",
