@@ -1,3 +1,4 @@
+files: "{{cookiecutter.__package_path|replace('/','\/')}}\/.*|tests\/.*"
 repos:
   - repo: local
     hooks:

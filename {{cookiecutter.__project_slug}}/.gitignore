@@ -8,13 +8,14 @@ __pycache__/
 # Root directories
 /.coverage
 /.env/
+/.hatch/
 /.idea/
 /.mypy_cache/
 /.pytest_cache/
 /.vscode/
 /dist/
 /docs/_build/
-{%- if cookiecutter.src_layout == "y" -%}/src{%- endif -%}/*.egg-info/
+{% if cookiecutter.src_layout == "y" -%}/src{%- endif -%}/*.egg-info/
 
 # Root files
 /.coverage*
